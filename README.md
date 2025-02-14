@@ -2,17 +2,19 @@
 ## Requisitos:
 # Lista de Usuarios [x]
 [x]Obtener una lista de usuarios desde la API pública https://randomuser.me/api/?results=20.
-[x]Mostrar nombre, género y país de cada usuario.
+[x]Mostrar nombre, género, país y foto de cada usuario.
 
+
+ACTUALIZAR CSS
 # Filtros y Búsqueda [x]
-[]Permitir filtrar por género utilizando useReducer.
-[]Implementar una barra de búsqueda para encontrar usuarios por nombre utilizando useMemo.
-[]La barra de búsqueda debe recibir automáticamente el foco al cargar la aplicación (useRef).
+[x]Permitir filtrar por género utilizando useReducer.
+[x]Implementar una barra de búsqueda para encontrar usuarios por nombre utilizando useMemo.
+[x]La barra de búsqueda debe recibir automáticamente el foco al cargar la aplicación (useRef).
 
-# Modo Claro/Oscuro []
-[]Implementar un contexto (useContext) para gestionar el tema de la aplicación.
+# Modo Claro/Oscuro [ ]
+[ ]Implementar un contexto (useContext) para gestionar el tema de la aplicación.
 
-# Optimización []
+# Optimización [x]
 Evitar cálculos innecesarios en el filtrado de usuarios con useMemo.
 
 

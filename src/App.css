@@ -1,6 +1,13 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+}
+
 table {
-  width: 80%;
-  height: 50dvh;
+  width: 100%;
   border: 1px solid white;
   border-collapse: collapse;
 }
@@ -21,4 +28,36 @@ tr, td {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
   font-size: 16px;
   padding: 10px;
+}
+
+header {
+  width: 100%;
+  height: 20vh;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header aside {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  color: #09f;
+}
+
+header aside label select {
+  width: 150px;
+  font-size: 16px;
+}
+
+header aside label input {
+  width: 150px;
+  font-size: 16px;
 }

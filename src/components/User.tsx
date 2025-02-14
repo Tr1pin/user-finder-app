@@ -1,6 +1,6 @@
 import { type User } from "../types"
 
-export function ListUsers ({ users }: { users: User[] }){
+export function UsersList ({ users }: { users: User[] }){
     return(
         <table>
             <thead>
@@ -15,7 +15,7 @@ export function ListUsers ({ users }: { users: User[] }){
             <tbody>
                 {
                     users.map(user => (
-                        <tr key={user.id.value}>
+                        <tr key={user.login.uuid}>
                             <td>{user.name.first}</td>
                             <td>{user.gender}</td>
                             <td>{user.location.country}</td>

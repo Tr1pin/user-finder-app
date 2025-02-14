@@ -11,8 +11,4 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

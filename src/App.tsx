@@ -1,54 +1,68 @@
 import { useEffect, useRef, useState } from 'react'
-import { type User } from './types'
-import { ListUsers } from './components/User'
+import { useFetch } from './hooks/useFetch' 
+import { useUserFilter } from './hooks/useUserFilter'
+import { useInputFocus } from './hooks/useInputFocus'
+import { UsersList } from './components/User'
 import './App.css'
 
 function App() {
-  const [users, setUsers] = useState([])
-  const [filters, setFilters] = useState({
-    genre: "all"
-  })
-  const genreRef = useRef<HTMLSelectElement>(null)
+  const { users } = useFetch()
+  const { filteredUsers, filters, setFilters } = useUserFilter({ users })
+  const { nameRef } = useInputFocus();
 
-  const filterUserByGenre = (users: User[]) => {
-    if (filters.genre === "all") {
-      return users;
-    }
-    return users.filter(user => user.gender === filters.genre);
-    
-  }
+  const genreRef = useRef<HTMLSelectElement>(null)
+  const [searchTerm, setSearchTerm] = useState(filters.name || '') 
 
   const handleChangeGenre = () => {
     if (genreRef.current) {
-      setFilters({ genre: genreRef.current.value })
+      setFilters({
+        ...filters,
+        genre: genreRef.current.value
+      })
     }
-    
-      console.log("handleChangeGenre");
-      console.log(users);
-      console.log(filters);
   }
-  const filteresUser = filterUserByGenre(users)
+
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value)
+  }
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?results=20')
-      .then(res => res.json())
-      .then(data => setUsers(data.results))
-      .catch(e => {
-        console.log(e)
+    const delayDebounce = setTimeout(() => {
+      setFilters({
+        ...filters,
+        name: searchTerm
       })
-  },[])
+      console.log(filters)
+    }, 500) // 500ms de espera antes de actualizar el estado global
+
+    return () => clearTimeout(delayDebounce)
+  }, [searchTerm]) // Se ejecuta cuando cambia `searchTerm`
+
 
   return (
-    <div>
-      <label htmlFor="">
-        <select name="genres" ref={genreRef} onChange={handleChangeGenre} defaultValue={"all"}>
-          <option value="all">All</option>
-          <option value="female">Female</option>
-          <option value="male" selected>Male</option>
-        </select>  
-      </label>
+    <div className='container'>
+      <header>
+        <h1>Filtros</h1>
+        <aside>
+          <select name="genres" ref={genreRef} onChange={handleChangeGenre} defaultValue="all">
+            <option value="all">All</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </select>  
+   
+
+          <form className='form'> 
+              <input 
+                placeholder='Buscar por nombre:'
+                type="text" 
+                ref={nameRef}
+                onChange={handleChangeName}
+              />
+          </form>
+        </aside>
+      </header>
       {
-        <ListUsers users={filteresUser} />
+        <UsersList users={filteredUsers || []} />
       }
     </div>
   )
