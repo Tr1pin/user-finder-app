@@ -4,11 +4,13 @@ import { useUserFilter } from './hooks/useUserFilter'
 import { useInputFocus } from './hooks/useInputFocus'
 import { UsersList } from './components/User'
 import './App.css'
+import { useTheme } from './hooks/useTheme'
 
 function App() {
   const { users } = useFetch()
   const { filteredUsers, filters, setFilters } = useUserFilter({ users })
-  const { nameRef } = useInputFocus();
+  const { nameRef } = useInputFocus()
+  const { theme, changeTheme } = useTheme()
 
   const genreRef = useRef<HTMLSelectElement>(null)
   const [searchTerm, setSearchTerm] = useState(filters.name || '') 
@@ -33,15 +35,15 @@ function App() {
         name: searchTerm
       })
       console.log(filters)
-    }, 500) // 500ms de espera antes de actualizar el estado global
+    }, 350) 
 
     return () => clearTimeout(delayDebounce)
-  }, [searchTerm]) // Se ejecuta cuando cambia `searchTerm`
+  }, [searchTerm])
 
 
   return (
-    <div className='container'>
-      <header>
+    <div className={`container-${theme}`}>
+      <header className={`header-${theme}`}>
         <h1>Filtros</h1>
         <aside>
           <select name="genres" ref={genreRef} onChange={handleChangeGenre} defaultValue="all">
@@ -51,7 +53,7 @@ function App() {
           </select>  
    
 
-          <form className='form'> 
+          <form className={`form-${theme}`}> 
               <input 
                 placeholder='Buscar por nombre:'
                 type="text" 
@@ -59,6 +61,12 @@ function App() {
                 onChange={handleChangeName}
               />
           </form>
+          <button onClick={changeTheme} className={`changeButton-${theme}`}>
+            {theme === "dark" &&
+              <p>LightMode</p> ||
+              <p>DarkMode</p>
+            }
+        </button>
         </aside>
       </header>
       {

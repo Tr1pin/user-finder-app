@@ -1,8 +1,10 @@
+import { useTheme } from "../hooks/useTheme"
 import { type User } from "../types"
 
 export function UsersList ({ users }: { users: User[] }){
+    const { theme } = useTheme()
     return(
-        <table>
+        <table className={`table-${theme}`}>
             <thead>
                 <tr>
                     <th>Nombre</th>
