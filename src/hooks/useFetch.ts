@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { type User } from "../types"; 
+import { type User } from "../types/types"; 
 
 export function useFetch() {
   const [users, setUsers] = useState<User[]>([])

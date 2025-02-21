@@ -18,6 +18,15 @@ export interface Results {
     nat: string
   }
   
+  export interface HeaderProps {
+    theme: string
+    changeTheme: () => void
+    handleChangeGenre: () => void
+    nameRef: React.RefObject<HTMLInputElement | null>
+    genreRef: React.RefObject<HTMLSelectElement | null>
+    handleChangeName: (e: React.ChangeEvent<HTMLInputElement>) => void
+  }
+
   export interface Name {
     title: string
     first: string

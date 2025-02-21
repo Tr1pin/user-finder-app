@@ -1,5 +1,5 @@
 import { useTheme } from "../hooks/useTheme"
-import { type User } from "../types"
+import { type User } from "../types/types"
 
 export function UsersList ({ users }: { users: User[] }){
     const { theme } = useTheme()
