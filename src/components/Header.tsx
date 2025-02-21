@@ -6,7 +6,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, changeTheme, genreRef,  h
   return (
     <header className={`header-${theme}`}>
       <h1>Filtros</h1>
-      <aside>
+      <aside className={`aside-${theme}`}>{/*Cambiar esto en el css*/}
         <select name="genres" ref={genreRef} onChange={handleChangeGenre} defaultValue="all">
           <option value="all">All</option>
           <option value="female">Female</option>

@@ -15,8 +15,19 @@ export const ThemeContex = createContext<ThemeContextType>(defaultContextValue)
 export function ThemeProvider({ children }: { children: ReactNode }) {
     const [theme, setTheme] = useState("dark")
 
+
     const changeTheme = () => {
-        theme === "dark" ? setTheme("light") : setTheme("dark")
+        const newTheme = theme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+        
+        document.documentElement.style.setProperty(
+            "--background-color",
+            newTheme === "dark" ? "black" : "white"
+        );
+        document.documentElement.style.setProperty(
+            "--text-color",
+            newTheme === "dark" ? "white" : "black"
+        );
     }
 
     return (     
