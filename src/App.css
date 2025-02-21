@@ -40,7 +40,7 @@
   align-items: center;
 }
 
-.header-dark aside {
+.aside-dark {
   display: flex;
   width: 50%;
   justify-content: space-around;
@@ -52,13 +52,23 @@
   color: #09f;
 }
 
-.header-dark aside label select {
-  width: 150px;
+.aside-dark select {
+  width: 100px;
+  height: 40px;
   font-size: 16px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
 }
 
-.header-dark aside label input {
+.aside-dark input {
   width: 150px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
   font-size: 16px;
 }
 
@@ -106,7 +116,7 @@
   align-items: center;
 }
 
-.header-light aside {
+.aside-light  {
   display: flex;
   width: 50%;
   justify-content: space-around;
@@ -118,19 +128,30 @@
   color: #09f;
 }
 
-.header-light aside label select {
-  width: 150px;
+.aside-light select {
+  width: 100px;
+  height: 40px;
   font-size: 16px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
-.header-light aside label input {
+.aside-light input {
   width: 150px;
+  height: 40px;
   font-size: 16px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .changeButton-dark {
   width: 100px;
   height: 40px;
+  font-size: 16px;
   color: white;
   background: black;
   border: 1px solid white;
@@ -141,9 +162,21 @@
 .changeButton-light {
   width: 100px;
   height: 40px;
+  font-size: 16px;
   background: white;
   border: 1px solid black;
   border-radius: 15px;
   color: black;
   text-align: center;
+  line-height: 40px;
+}
+
+.changeButton-dark p {
+  margin: 0;
+  padding: 0;
+}
+
+.changeButton-light p {
+  margin: 0;
+  padding: 0;
 }
